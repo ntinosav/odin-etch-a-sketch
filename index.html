@@ -37,9 +37,15 @@
             squares.forEach((sq) => {
                 sq.addEventListener("click", () => {
                     if (sq.classList.contains("clicked")) {
-                        sq.classList.remove("clicked");
+                        // sq.classList.remove("clicked");
                         
                     }else{
+                        let red = Math.floor(Math.random()*256);
+                        let green = Math.floor(Math.random()*256);
+                        let blue = Math.floor(Math.random()*256);
+                        let r_color = "rgb(" + red +"," + green + "," + blue + ")";
+                        console.log("rgb(" + red +"," + green + "," + blue + ")");
+                        sq.style.backgroundColor = r_color;
                         sq.classList.add("clicked");
                     }
                     
