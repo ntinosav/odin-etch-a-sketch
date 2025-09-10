@@ -13,18 +13,16 @@
 #grid {
     /* flex-wrap: wrap; */
     /* gap: 1px; */
-    width: 60vw;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
-    height: 60vw;
+    height: 960px;
 }
 
 .row {
     display: flex;
     margin-bottom: 1px;
     gap: 1px;
-    /* flex-basis: 800px; */
-    /* justify-content: center; */
 }
 
 .square {
@@ -34,11 +32,9 @@
 }
 
 .square:hover {
-    /* background-color: plum; */
     border:1px solid black;
 }
 
 .clicked {
-    /* background-color: rgb(212, 165, 102); */
-    /* opacity: 0.1; */
+    
 }
