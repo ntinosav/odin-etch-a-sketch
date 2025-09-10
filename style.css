@@ -18,3 +18,17 @@
     margin-right: auto;
     height: 60vw;
 }
+
+.row {
+    display: flex;
+    margin-bottom: 1px;
+    gap: 1px;
+    /* flex-basis: 800px; */
+    /* justify-content: center; */
+}
+
+.square {
+    box-sizing: border-box;
+    background-color: powderblue ;
+    flex-shrink: 0;
+}
