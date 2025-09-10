@@ -37,13 +37,23 @@
             squares.forEach((sq) => {
                 sq.addEventListener("click", () => {
                     if (sq.classList.contains("clicked")) {
-                        // sq.classList.remove("clicked");
+                        let col = sq.style.backgroundColor;
+                        let op = col.substring(col.length-4, col.length-1);
+                        console.log(op);
+                        if (op < 1) {
+                            op = parseFloat(op) + 0.1;
+                            console.log(op);
+                            col = col.substring(0, col.length -6);
+                            col = col + "," + op + ")";
+                            sq.style.backgroundColor = col;
+                        }       
                         
                     }else{
                         let red = Math.floor(Math.random()*256);
                         let green = Math.floor(Math.random()*256);
                         let blue = Math.floor(Math.random()*256);
-                        let r_color = "rgb(" + red +"," + green + "," + blue + ")";
+                        let alpha = 0.1;
+                        let r_color = "rgba(" + red +"," + green + "," + blue + "," + alpha + ")";
                         console.log("rgb(" + red +"," + green + "," + blue + ")");
                         sq.style.backgroundColor = r_color;
                         sq.classList.add("clicked");
@@ -63,7 +73,7 @@
 
 
 
-        createGrid(6);
+        createGrid(16);
     </script>
 
 </body>
