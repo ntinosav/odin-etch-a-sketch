@@ -14,6 +14,7 @@
 
     <script>
         const grid = document.getElementById("grid");
+        const sizeButton = document.querySelector("#size");
 
         function createGrid(n) {
             grid.innerHTML = "";
@@ -31,6 +32,15 @@
                 }    
             }
         }
+
+        function changeSize() {
+            let sq = prompt("Enter how many squares you want ? (maximum 100)");
+            return sq;
+        }
+
+        sizeButton.addEventListener("click", () => createGrid(changeSize()));
+
+
 
         createGrid(6);
     </script>
