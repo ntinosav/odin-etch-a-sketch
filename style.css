@@ -32,3 +32,13 @@
     background-color: powderblue ;
     flex-shrink: 0;
 }
+
+.square:hover {
+    /* background-color: plum; */
+    border:1px solid black;
+}
+
+.clicked {
+    background-color: rgb(212, 165, 102);
+    /* opacity: 0.1; */
+}

@@ -31,6 +31,21 @@
                     row.appendChild(square);
                 }    
             }
+
+            // Make squares clickable
+            let squares = document.querySelectorAll(".square");
+            squares.forEach((sq) => {
+                sq.addEventListener("click", () => {
+                    if (sq.classList.contains("clicked")) {
+                        sq.classList.remove("clicked");
+                        
+                    }else{
+                        sq.classList.add("clicked");
+                    }
+                    
+                });
+            });
+
         }
 
         function changeSize() {
