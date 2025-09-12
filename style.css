@@ -16,10 +16,10 @@ body {
 }
 
 #grid {
-    width: 960px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
-    height: 960px;
+    height: 500px;
 }
 
 .row {
