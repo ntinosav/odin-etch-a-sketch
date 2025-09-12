@@ -23,7 +23,7 @@
             // Make squares clickable
             let squares = document.querySelectorAll(".square");
             squares.forEach((sq) => {
-                sq.addEventListener("click", () => {
+                sq.addEventListener("mouseover", () => {
                     if (sq.classList.contains("clicked")) {
                         incrementOpacity(sq);        
                     }else{  // set random color with opacity to 0.1
