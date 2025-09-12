@@ -83,8 +83,12 @@
 
 
         function changeSize() {
-            let sq = prompt("Enter how many squares you want ? (maximum 100)");
-            return sq;
+            let size = 0;
+            do {
+                size = prompt("Enter how many squares you want ? (maximum 100)");
+            }while(size < 1 || size > 100)
+            
+            return size;
         }
 
 
