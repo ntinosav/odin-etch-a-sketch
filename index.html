@@ -17,6 +17,27 @@
         const sizeButton = document.querySelector("#size");
 
         function createGrid(n) {
+
+            createDefaultGrid(n);
+            
+            // Make squares clickable
+            let squares = document.querySelectorAll(".square");
+            squares.forEach((sq) => {
+                sq.addEventListener("click", () => {
+                    if (sq.classList.contains("clicked")) {
+                        incrementOpacity(sq);        
+                    }else{  // set random color with opacity to 0.1
+                        setRandomColor(sq);
+                    }
+                });
+            });
+
+        }
+
+
+
+
+        function createDefaultGrid(n) {
             grid.innerHTML = "";
             let dim = 100/n;
             for (let i = 0; i < n ;i++) {
@@ -31,65 +52,51 @@
                     row.appendChild(square);
                 }    
             }
-
-            // Make squares clickable
-            let squares = document.querySelectorAll(".square");
-            squares.forEach((sq) => {
-                sq.addEventListener("click", () => {
-                    if (sq.classList.contains("clicked")) {
-                        let col = sq.style.backgroundColor;
-                        if (sq.classList.contains("darkest")) {
-                            var op = col.substring(col.length-2, col.length-1);
-                            console.log("Op now is :" + op);
-                            sq.classList.remove("darkest"); 
-                        }else{
-                            var op = col.substring(col.length-4, col.length-1);
-                        }
-                        console.log(op);
-                        op = parseFloat(op);
-                        op = op + 0.1;
-                        
-                        op = Math.round(op*10)/10;
-                        console.log("Outside if " + op);
-                        if (op <= 1) {
-                            // op = op + 0.1;
-                            // op = Math.round(op*10)/10;
-                            console.log(op);
-                            col = col.substring(0, col.length -6);
-                            col = col + "," + op + ")";
-                            sq.style.backgroundColor = col;
-                            console.log(col);
-                            if (op == 1) {
-                                sq.classList.add("darkest");
-                            }
-                        }else{
-                            op = 0.1;
-                            col = col.substring(0, col.length -1);
-                            col = col + "," + op + ")";
-                            sq.style.backgroundColor = col;
-                            console.log(col);
-                        }       
-                        
-                    }else{
-                        let red = Math.floor(Math.random()*256);
-                        let green = Math.floor(Math.random()*256);
-                        let blue = Math.floor(Math.random()*256);
-                        let alpha = 0.1;
-                        let r_color = "rgba(" + red +"," + green + "," + blue + "," + alpha + ")";
-                        console.log("rgb(" + red +"," + green + "," + blue + ")");
-                        sq.style.backgroundColor = r_color;
-                        sq.classList.add("clicked");
-                    }
-                    
-                });
-            });
-
         }
+
+
+
+
+        function setRandomColor(square) {
+            let red = Math.floor(Math.random()*256);
+            let green = Math.floor(Math.random()*256);
+            let blue = Math.floor(Math.random()*256);
+            let alpha = 0.1;
+            let r_color = "rgba(" + red +"," + green + "," + blue + "," + alpha + ")";
+            console.log("rgb(" + red +"," + green + "," + blue + ")");
+            square.style.backgroundColor = r_color;
+            square.classList.add("clicked");
+        }
+        
+
+        function incrementOpacity(square) {
+            let col = square.style.backgroundColor;
+            if (square.classList.contains("opaque")) {
+                var op = 0.1;
+                col = col.substring(0, col.length - 1);
+                square.classList.remove("opaque");
+            }else{
+                var op = col.substring(col.length-4, col.length-1);
+                op = parseFloat(op);
+                op = op + 0.1;
+                op = Math.round(op*10)/10;
+                col = col.substring(0, col.length -6);
+            }
+
+            col = col + "," + op + ")";
+            square.style.backgroundColor = col;
+
+            if (op == 1) {
+                square.classList.add("opaque");
+            }
+        }
+
 
         function changeSize() {
             let sq = prompt("Enter how many squares you want ? (maximum 100)");
             return sq;
         }
+
 
         sizeButton.addEventListener("click", () => createGrid(changeSize()));
 
