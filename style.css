@@ -8,7 +8,7 @@ h1 {
     color: rgb(96, 127, 212);
 }
 
-#size {
+#size, #reset {
     font-size: large;
     background-color: #bd5464;
     border: none;

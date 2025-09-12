@@ -9,12 +9,14 @@
 <body>
     <h1>Etch - A - Sketch</h1>
     <button id="size">Change Size</button>
+    <button id="reset">Reset Grid</button>
     <div id="grid"></div>
 
 
     <script>
         const grid = document.getElementById("grid");
         const sizeButton = document.querySelector("#size");
+        const resetButton = document.querySelector("#reset");
 
         function createGrid(n) {
 
@@ -31,7 +33,7 @@
                     }
                 });
             });
-
+            return n;
         }
 
 
@@ -92,11 +94,16 @@
         }
 
 
-        sizeButton.addEventListener("click", () => createGrid(changeSize()));
+
+        resetButton.addEventListener("click", () => createGrid(n))
+        sizeButton.addEventListener("click", () => {
+          n = changeSize();
+          createGrid(n);
+        })
 
 
-
-        createGrid(16);
+        var n = 16
+        createGrid(n);
     </script>
 
 </body>
