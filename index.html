@@ -38,14 +38,36 @@
                 sq.addEventListener("click", () => {
                     if (sq.classList.contains("clicked")) {
                         let col = sq.style.backgroundColor;
-                        let op = col.substring(col.length-4, col.length-1);
+                        if (sq.classList.contains("darkest")) {
+                            var op = col.substring(col.length-2, col.length-1);
+                            console.log("Op now is :" + op);
+                            sq.classList.remove("darkest"); 
+                        }else{
+                            var op = col.substring(col.length-4, col.length-1);
+                        }
                         console.log(op);
-                        if (op < 1) {
-                            op = parseFloat(op) + 0.1;
+                        op = parseFloat(op);
+                        op = op + 0.1;
+                        
+                        op = Math.round(op*10)/10;
+                        console.log("Outside if " + op);
+                        if (op <= 1) {
+                            // op = op + 0.1;
+                            // op = Math.round(op*10)/10;
                             console.log(op);
                             col = col.substring(0, col.length -6);
                             col = col + "," + op + ")";
                             sq.style.backgroundColor = col;
+                            console.log(col);
+                            if (op == 1) {
+                                sq.classList.add("darkest");
+                            }
+                        }else{
+                            op = 0.1;
+                            col = col.substring(0, col.length -1);
+                            col = col + "," + op + ")";
+                            sq.style.backgroundColor = col;
+                            console.log(col);
                         }       
                         
                     }else{
