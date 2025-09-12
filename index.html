@@ -61,33 +61,23 @@
             let red = Math.floor(Math.random()*256);
             let green = Math.floor(Math.random()*256);
             let blue = Math.floor(Math.random()*256);
-            let alpha = 0.1;
-            let r_color = "rgba(" + red +"," + green + "," + blue + "," + alpha + ")";
+            let r_color = "rgb(" + red +"," + green + "," + blue + ")";
             console.log("rgb(" + red +"," + green + "," + blue + ")");
             square.style.backgroundColor = r_color;
+            square.style.opacity = "0.1";
             square.classList.add("clicked");
         }
         
 
         function incrementOpacity(square) {
-            let col = square.style.backgroundColor;
-            if (square.classList.contains("opaque")) {
-                var op = 0.1;
-                col = col.substring(0, col.length - 1);
-                square.classList.remove("opaque");
+            let op = square.style.opacity;
+            if (op == "1") {
+                square.style.opacity = 0.1;
             }else{
-                var op = col.substring(col.length-4, col.length-1);
                 op = parseFloat(op);
                 op = op + 0.1;
                 op = Math.round(op*10)/10;
-                col = col.substring(0, col.length -6);
-            }
-
-            col = col + "," + op + ")";
-            square.style.backgroundColor = col;
-
-            if (op == 1) {
-                square.classList.add("opaque");
+                square.style.opacity = op;
             }
         }
 

@@ -40,9 +40,5 @@ body {
 }
 
 .clicked {
-    
-}
-
-.opaque {
-    
+    transition-duration: 500ms;
 }
